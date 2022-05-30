@@ -1,0 +1,8 @@
+{
+  "name": "desktop_lyrics_plugin",
+  "version": "1.0.0",
+  "description": "Desktop Lyrics Plugin on Windows",
+  "main": "index.js",
+  "author": "Saltedfish",
+  "license": "MIT"
+}
