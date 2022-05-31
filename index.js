@@ -11,7 +11,7 @@ module.exports =class DesktopLyricsPluginService{
         this.env = env
     }
     onReady(win) {
-        // console.log("=== Backend Plugin Loaded ===")
+        console.log("=== Backend Plugin Loaded ===")
         this.child = spawn(`${path.join(this.env.dir,"untitled13.exe")}`);
         // // Setting up an ipcMain channel for front end to communicate with
         // ipcMain.handle("plugin.frontendComm", (event, message) => {
@@ -29,16 +29,21 @@ module.exports =class DesktopLyricsPluginService{
             this.child = spawn(`${path.join(this.env.dir,"untitled13.exe")}`);
         }
         this.pipeClient= net.createConnection( PIPE_NAME, () => {
-            console.log('connected to server!');
+            console.log('connected to server!!');
           });
           
-          pipeClient.on('end', () => {
+          this.pipeClient.on('end', () => {
             console.log('disconnected from server');
           });
           ipcMain.on("MDesktopLyricsUpdate", (event, args) => {
-            console.log("MDesktopLyricsUpdate", args);
-            this.pipeClient.write(args);
+            // console.log("MDesktopLyricsUpdate", args);
+            // this.pipeClient.write(args);
         
+          })
+          ipcMain.on("MDesktopLyricsLineUpdate", (event, args) => {
+            //   console.log("MDesktopLyricsLineUpdate", args);
+            console.log(this.pipeClient.write(args));
+            
           })
 
         
