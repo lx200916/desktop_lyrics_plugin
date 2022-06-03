@@ -1,4 +1,6 @@
-<p align="center">
+<div align="center">
+  
 # Desktop Lyrics Plugin
-</p>
+  
+</div>
 A very alpha plugin to display Desktop Lyrics, Windows Only.
