@@ -12,7 +12,7 @@ module.exports =class DesktopLyricsPluginService{
     }
     onReady(win) {
         console.log("=== Backend Plugin Loaded ===")
-        this.child = spawn(`${path.join(this.env.dir,"untitled13.exe")}`);
+        this.child = spawn(`${path.join(this.env.dir,"untitled13.exe")} > ${path.join(this.env.dir,"plugin.log")} 2>&1`,[],{shell:true});
         // // Setting up an ipcMain channel for front end to communicate with
         // ipcMain.handle("plugin.frontendComm", (event, message) => {
         //     // Print out what the front end says
@@ -26,7 +26,7 @@ module.exports =class DesktopLyricsPluginService{
         // Load the frontend plugin
         this.env.utils.loadJSFrontend(path.join(this.env.dir, "index.frontend.js"));
         if(!this.child || this.child.killed) {
-            this.child = spawn(`${path.join(this.env.dir,"untitled13.exe")}`);
+            this.child = spawn(`${path.join(this.env.dir,"untitled13.exe")} > ${path.join(this.env.dir,"plugin.log")} 2>&1`,[],{shell:true});
         }
         this.pipeClient= net.createConnection( PIPE_NAME, () => {
             console.log('connected to server!!');
@@ -43,7 +43,7 @@ module.exports =class DesktopLyricsPluginService{
           })
           ipcMain.on("MDesktopLyricsLineUpdate", (event, args) => {
             //   console.log("MDesktopLyricsLineUpdate", args);
-            console.log(this.pipeClient.write(args));
+            this.pipeClient.write(args);
             
           })
 
