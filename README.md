@@ -3,7 +3,10 @@
 # Desktop Lyrics Plugin
   
 </div>
-A very alpha plugin to display Desktop Lyrics, Windows Only. **Store Version of Cider is unsupported  due to restrictions from MS.**
+
+
+A very alpha plugin to display Desktop Lyrics, Windows Only. 
+**Store Version of Cider is unsupported due to restrictions from MS.**
 
 
 ### MenuEntry
