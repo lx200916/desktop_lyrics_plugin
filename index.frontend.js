@@ -19,14 +19,16 @@ class DesktopLyricsPlugin {
     FollowMenuEntry.onClick = async () => {
       await this.setFollow(!this.follow);
     };
+
+    this.followMenuEntry = FollowMenuEntry;
+    CiderFrontAPI.AddMenuEntry(FollowMenuEntry);
     const LockMenuEntry = new CiderFrontAPI.Objects.MenuEntry();
     LockMenuEntry.id = uuidv4();
     LockMenuEntry.name = "Lock / Unlock Lyrics Window";
     LockMenuEntry.onClick = () => {
-      DesktopLyricsPluginInstance.updateLyricsLine("$$##NMSL");
+      ipcRenderer.send("MDesktopLyricsLineUpdate", "$$##NMSL");
     };
-    this.followMenuEntry = FollowMenuEntry;
-    CiderFrontAPI.AddMenuEntry(FollowMenuEntry);
+    CiderFrontAPI.AddMenuEntry(LockMenuEntry);
 
     app.$watch(
       "lyrics",
