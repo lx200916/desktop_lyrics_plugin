@@ -85,6 +85,22 @@ class DesktopLyricsPlugin {
         deep: true,
       }
     );
+    MusicKit.getInstance().addEventListener(MusicKit.Events.playbackStateDidChange, (a) => {
+      console.log("playbackStateDidChange", a);
+      if (DesktopLyricsPluginInstance.follow) {
+        return;
+      }
+      if (a.state == 3) {
+        ipcRenderer.send("MDesktopLyricsLineUpdate", "");
+      }
+      if (a.state == 2&&a.oldState==3) {
+        
+          DesktopLyricsPluginInstance.updateLyricsLine(DesktopLyricsPluginInstance.currentLyricsLine);
+        
+      }
+    });
+
+
     MusicKit.getInstance().addEventListener(
       MusicKit.Events.playbackTimeDidChange,
       (a) => {
