@@ -86,7 +86,7 @@ class DesktopLyricsPlugin {
       }
     );
     MusicKit.getInstance().addEventListener(MusicKit.Events.playbackStateDidChange, (a) => {
-      console.log("playbackStateDidChange", a);
+      // console.log("playbackStateDidChange", a);
       if (DesktopLyricsPluginInstance.follow) {
         return;
       }

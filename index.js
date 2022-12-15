@@ -42,8 +42,11 @@ module.exports = class DesktopLyricsPluginService {
     });
 
     this.pipeClient.on("data", (data) => {
-      console.log("disconnected from server");
+      console.log("data from server");
       settings=JSON.parse(data.toString());
+    });
+    this.pipeClient.on("end", () => {
+      console.log("disconnect from server");
     });
     this.pipeClient.on("error", (err) => {})
     ipcMain.on("MDesktopLyricsUpdate", (event, args) => {
