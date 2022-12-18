@@ -23,6 +23,8 @@ Menu->Plugin-> "Lock / Unlock Lyrics Window",then drag the window to anywhere yo
 > **Note**
 >
 > The Position Will RESET after re-launch.
+### Customize Color & Font Size 
+We introduce a toml-based config file to add some customized options. See the `README.md` of https://github.com/lx200916/desktop_plugin_server.
 ### What's THE HELL in the Binary?
 
 The binary executable `untitled13.exe` (Just ignore the casual name) was built to call Windows Direct2D/GDI API and then render lyrics as a transparent window on desktop. You can get the source from https://github.com/lx200916/desktop_plugin_server and build it yourself. 
