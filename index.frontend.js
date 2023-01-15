@@ -134,7 +134,7 @@ class DesktopLyricsPlugin {
   }
   async  setFollow(val) {
     this.follow = val;
-    await CiderCache.putCache("desktop-lyrics-follow", val?1:-1);
+    await CiderCache.putCache("desktop-lyrics-follow", {val});
     this.followMenuEntry.name = this.follow?"Disable Follow Lyrics Panel":"Enable Follow Lyrics Panel";
     if(val==true&&app.drawer.open==false) {
       ipcRenderer.send("MDesktopLyricsLineUpdate", "");
@@ -150,21 +150,21 @@ class DesktopLyricsPlugin {
       this.menuEntry.name = "Open Desktop Lyrics";
       ipcRenderer.send("MDesktopLyricsLineUpdate", "");
     }
-    await CiderCache.putCache("desktop-lyrics-switch", this.flag?1:-1);
+    await CiderCache.putCache("desktop-lyrics-switch", {val:this.flag});
   }
   async getSettings() {
-    this.switch = await CiderCache.getCache("desktop-lyrics-switch");
-    if (this.switch) {
-      await this.setSwitch(this.switch==1);
+    let switchval = await CiderCache.getCache("desktop-lyrics-switch");
+    if (switchval) {
+      await this.setSwitch(switchval.val==true);
     } else {
-      await CiderCache.putCache("desktop-lyrics-switch", true);
+      await CiderCache.putCache("desktop-lyrics-switch", {val:true});
     }
     CiderFrontAPI.AddMenuEntry(this.menuEntry);
     let follow = await CiderCache.getCache("desktop-lyrics-follow");
     if (follow) {
-      await setFollow(follow==1);
+      await this.setFollow(follow.val==true);
     }else{
-      await CiderCache.putCache("desktop-lyrics-follow", -1);
+      await CiderCache.putCache("desktop-lyrics-follow", {val:false});
     }
   }
   updateLyrics(val) {
