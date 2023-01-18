@@ -13,13 +13,25 @@ module.exports = class DesktopLyricsPluginService {
   onReady(win) {
     console.log("=== Backend Plugin Loaded ===");
     this.child = spawn(
-      `${path.join(this.env.dir, "untitled13.exe")} > ${path.join(
+      `"${path.join(this.env.dir, "untitled13.exe")}" > "${path.join(
         this.env.dir,
         "plugin.log"
-      )} 2>&1`,
+      )}" 2>&1`,
       [],
       { shell: true }
     );
+    console.log(process.env.ComSpec);
+    console.log( `"${path.join(this.env.dir, "untitled13.exe")}" > "${path.join(
+      this.env.dir,
+      "plugin.log"
+    )}" 2>&1`)
+    this.child.stderr.on('data',(data)=>{
+      console.log(process.env.ComSpec);
+      console.log(`Renderer Error:${data.toString()}`);
+    })
+    this.child.stdout.on('data',(data)=>{
+      console.log(`Renderer stdout:${data.toString()}`);
+    })
   }
   onRendererReady(win) {
     console.debug("Renderer Ready Called");
@@ -27,14 +39,27 @@ module.exports = class DesktopLyricsPluginService {
     // Load the frontend plugin
     this.env.utils.loadJSFrontend(path.join(this.env.dir, "index.frontend.js"));
     if (!this.child || this.child.killed) {
+      console.log("=== Render Killed ===");
+
       this.child = spawn(
-        `${path.join(this.env.dir, "untitled13.exe")} > ${path.join(
+        `"${path.join(this.env.dir, "untitled13.exe")}" > "${path.join(
           this.env.dir,
           "plugin.log"
-        )} 2>&1`,
+        )}" 2>&1`,
         [],
         { shell: true }
       );
+      console.log( `"${path.join(this.env.dir, "untitled13.exe")}" > "${path.join(
+        this.env.dir,
+        "plugin.log"
+      )}" 2>&1`)
+      this.child.stderr.on('data',(data)=>{
+        console.log(process.env.ComSpec);
+      console.log(`Renderer Error:${data.toString()}`);
+    })
+    this.child.stdout.on('data',(data)=>{
+      console.log(`Renderer stdout:${data.toString()}`);
+    })
     }
     console.log("PID:", this.child.pid);
     this.pipeClient = net.createConnection(PIPE_NAME, () => {
