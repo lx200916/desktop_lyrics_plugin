@@ -6,7 +6,9 @@
 
 
 A very alpha plugin to display Desktop Lyrics, Windows Only. 
-**Store Version of Cider is unsupported due to restrictions from MS.**
+
+**Store Version of Cider is unsupported due to restrictions from MS.**  
+**Cider2 is not supported either at this time.**
 
 
 ### MenuEntry
