@@ -1,4 +1,6 @@
 <div align="center">
+  <img src="https://user-images.githubusercontent.com/44310445/229792392-16d3c7af-3e4d-4c5f-9538-979cb00ff68d.svg" />
+
   
 # Desktop Lyrics Plugin
   
