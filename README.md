@@ -39,8 +39,8 @@ Calling Windows API from Rust is so painful due to the poor docs 🤯 ...but tha
 #### About Cider2?
 **TL;DR:** No Plan For Now(And Maybe Neither in Future).
 
-Technically, Cider2 changes its architecture completely from `Electron(JS+IPC)` to something totally irrelevant(maybe Go or Rust ¯\\_(ツ)_/¯).Thus I may have to refactor most of the codes to catch up with those BREAKING CHNAGES they made. 
-Most importantly: `Desktop Lyrics Plugin` relies on a standalone process(which writen in Rust then compiled to `untitled13.exe`) to make Win32 SysCall and display the floating Window. **The process(as well as the plugin) can not be loaded when Cider was installed from Windows Store.(Due to Some restrictions from MS I Guess). Unfortunately,Cider2 seems to be only distributes in Windows Store.**
+Technically, Cider2 changes its architecture completely from `Electron(JS+IPC)` to something totally irrelevant(maybe Go or Rust ¯\\_(ツ)_/¯  ).Thus I may have to refactor most of the codes to catch up with those BREAKING CHNAGES they made. 
+Most importantly: `Desktop Lyrics Plugin` relies on a standalone process(which written in Rust then compiled to `untitled13.exe`) to make Win32 syscall and display the floating window. **The process(as well as the plugin) can not be loaded when Cider was installed from Windows Store.(Due to Some restrictions from MS I Guess). Unfortunately,Cider2 seems to be only distributed in Windows Store.**
 
 Personally, I have changed my laptop to a MacBook, which has made the code development and testing work for this plugin somewhat complicated and awkward. So...We'll see.
 
@@ -49,4 +49,4 @@ Personally, I have changed my laptop to a MacBook, which has made the code devel
 For other platforms, you should look for more `professional and comprehensive` options(Like Lyricify to Spotify/YesPlay or HotLyric).
 
 #### Plugin Updates?
-**Yes!** Thanks to the many dedicated open-source contributors in the Issue section who have proposed many awesome features for this project and assisted in testing, the plugin works perfectly for Cider1, and I will keep tracking new API changes of Cider1 and follow up.
+**Yes!** Thanks to the many dedicated open-source contributors in the Issue section who have proposed many awesome features for this project and assisted in testing, the plugin works perfectly on Cider1, and I will keep tracking new API changes of Cider1 and follow up.
