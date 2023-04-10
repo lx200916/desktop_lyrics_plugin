@@ -6,6 +6,7 @@
   
 </div>
 
+[中文版本](./README_CN.md)
 
 A very alpha plugin to display Desktop Lyrics, Windows Only. 
 
